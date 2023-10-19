@@ -1,0 +1,46 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/profile.css')}}>
+</head>
+<body>
+    
+    <div class="profile-container">
+        <h1>Profile Management</h1>
+        <form action="/update" method="post">
+         
+            <label for="password">change firstname:</label>
+            <input type="text" id="firstname" name="firstname">
+
+            <label for="password">change last name:</label>
+            <input type="text" id="lastname" name="lastname">
+
+            <label for="password">old password:</label>
+            <input type="password" id="password" name="password" required>
+    
+            <label for="confirm-password">new password:</label>
+            <input type="password" id="confirm-password" name="newpassword" required>
+
+            <label for="confirm-password">confirm new password:</label>
+            <input type="password" id="confirm-password" name="confirmpassword" required>
+
+    
+            
+    
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
+    
+    
+</body>
+</html>
+{% endblock %}
+
+
+
+
+
+
+

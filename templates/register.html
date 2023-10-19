@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/register.css')}}>
+    <title>Registration Page</title>
+</head>
+<body>
+    
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action='/api/register' method="post">
+                    <h2>Register</h2>
+                    <div class="flashedmessages">
+
+                        <!-- flash messages -->
+                      
+                        {% with messages = get_flashed_messages() %}
+                      
+                        {% if messages %}
+                      
+                        {% for message in messages %}
+                      
+                        <div class="row flashes col s12">
+                      
+                            <h3 class="center-align flashmessage col s10 offset-s1">{{ message }}</h3>
+                      
+                        </div>
+                      
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                      </div>
+                      <div class="main container">
+                        {% block content %}
+                        {% endblock %}
+                      </div>
+                    <div class="inputbox">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" name="firstname" maxlength="10" autocomplete="off" required>
+                        <label for="" >First Name</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" name="lastname" maxlength="10" autocomplete="off" >
+                        <label for="" >Last Name</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="email" pattern= "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" autocomplete="off"title="please enter a valid email" required>
+                        <label for="" >Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s])[a-zA-Z\d\W]+$" title="Atleast One uppercase,One lowercase,digit and special character" required>
+                        <label for="" >Password</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="confirmpassword" minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\w\s])[a-zA-Z\d\W]+$" title="Atleast One uppercase,One lowercase,digit and special character" required>
+                        <label for="" >Confirm Password</label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="register">
+                        <p>Already have an account? <a href="/">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

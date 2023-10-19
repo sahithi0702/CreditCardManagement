@@ -1,0 +1,51 @@
+<!-- This is an HTML file for an admin form to generate bills -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Form</title>
+    <!-- Include an external stylesheet for styling -->
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <!-- Use Flask's url_for function to include a stylesheet from the static folder -->
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/admin.css')}}>
+</head>
+<body>
+    <!-- Create a container for the form -->
+    <div class="container">
+        <!-- Create a form that will submit data to the /billgenerator endpoint using the POST method -->
+        <form action="/billgenerator" method="post" class="admin-form">
+            <!-- Input field for the email address of the user -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" autocomplete="off" pattern= "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" title="please enter a valid email" required>
+            
+            <!-- Input field for the amount used -->
+            <label for="amount">Amount Used:</label>
+            <input type="number" id="amount" name="amount" min="0" autocomplete="off" placeholder="Enter amount used"  required>
+
+            <!-- Input field for the place of use -->
+            <label for="placeOfUse">Place of Use:</label>
+            <input type="text" id="placeOfUse" name="placeOfUse" placeholder="Enter place of use" required>
+            
+            <!-- Select dropdown for bank selection -->
+            <div class="form-group">
+                <label for="bank">Bank Name:</label>
+                <select id="bank" name="creditCardUsed" required>
+                  <option value="">Select a bank</option>
+                  <option value="SBI">SBI</option>
+                  <option value="AXIS">Axis</option>
+                  <option value="HDFC">HDFC</option>
+                  <option value="UNION">Union</option>
+                  <option value="ICICI">ICICI</option>
+                  <option value="KOTAK">Kotak</option>
+                </select>
+              </div>
+
+            <!-- Input field for the credit card number -->
+            <label for="creditCardNumber">Credit Card Number:</label>
+            <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="Enter credit card number" pattern="[0-9]{16}"  autocomplete="off" placeholder="#### #### #### ####" required>
+
+            <!-- Submit button for the form -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

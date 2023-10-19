@@ -1,0 +1,163 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/expense.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Expense</title>
+</head>
+<body>
+    <h1 style="text-align: center; color:blue;text-shadow: 2px 3px 5px pink;">Tracking Expense</h1>
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-md-12">
+                <h2>Transaction Data</h2>
+                <ul>
+                    {% for record in data %}
+                        <li>Date: {{ record.date }}, Amount: ${{ record.amount }}</li>
+                    {% endfor %}
+                </ul>
+            </div> -->
+            <div class="col-md-12">
+                <h2>Monthly Expense Charts</h2>
+                <div class="charts-container">
+                    <div class="chart">
+                        <canvas id="expenseLineChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <canvas id="expenseBarGraph"></canvas>
+                    </div>
+                    <div class="chart">
+                        <canvas id="expensePieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Extract the data from the server-side variable
+        var data = {{ data | tojson | safe }};
+        
+        // Convert date strings to Date objects
+        for (var i = 0; i < data.length; i++) {
+            data[i].date = new Date(data[i].date);
+        }
+
+        // Group data by month
+        var monthlyData = groupDataByMonth(data);
+
+        // Extract month labels and total amounts
+        var monthLabels = monthlyData.map(item => item.monthLabel);
+        var monthTotalAmounts = monthlyData.map(item => item.totalAmount);
+
+        // Create a line chart using Chart.js
+        var ctxLine = document.getElementById('expenseLineChart').getContext('2d');
+        var lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: monthLabels,
+                datasets: [{
+                    label: 'Amount Spent',
+                    data: monthTotalAmounts,
+                    borderColor: 'rgb(75, 192, 192)',
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    x: [{
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }],
+                    y: [{
+                        title: {
+                            display: true,
+                            text: 'Amount Spent'
+                        }
+                    }]
+                }
+            }
+        });
+
+        // Create a bar graph using Chart.js
+        var ctxBar = document.getElementById('expenseBarGraph').getContext('2d');
+        var barGraph = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: monthLabels,
+                datasets: [{
+                    label: 'Amount Spent',
+                    data: monthTotalAmounts,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: [{
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }],
+                    y: [{
+                        title: {
+                            display: true,
+                            text: 'Amount Spent'
+                        }
+                    }]
+                }
+            }
+        });
+
+        // Create a pie chart using Chart.js
+        var ctxPie = document.getElementById('expensePieChart').getContext('2d');
+        var pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: monthLabels,
+                datasets: [{
+                    data: monthTotalAmounts,
+                    backgroundColor: [
+                        'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink',
+                        'brown', 'gray', 'teal', 'cyan', 'magenta'
+                    ]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Monthly Expense Distribution'
+                }
+            }
+        });
+
+        // Function to group data by month
+        function groupDataByMonth(data) {
+            var groupedData = {};
+            data.forEach(function (record) {
+                var date = record.date;
+                var month = date.toLocaleString('default', { month: 'long' });
+                var year = date.getFullYear();
+                var key = year + ' ' + month;
+                if (!groupedData[key]) {
+                    groupedData[key] = {
+                        monthLabel: year + ' ' + month,
+                        totalAmount: 0
+                    };
+                }
+                groupedData[key].totalAmount += record.amount;
+            });
+            return Object.values(groupedData);
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

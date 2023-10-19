@@ -1,0 +1,73 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/dashboard.css')}}>
+</head>
+<style>
+  body{
+    background-image: url('https://wallpaperswide.com/download/light_background-wallpaper-2560x1440.jpg');
+  }
+  th{
+    background-color: grey;
+    text-align: center;
+    color:white;
+  }
+  td{
+    text-align:center
+  }
+</style>
+<body>
+  <div class="search">
+    <form action="/dashboard" method="GET">
+      <input type="text" placeholder="Search by bank name" name="search" class="search" value="{{search}}">
+      <button type="submit" >Search</button>
+    </form>
+  </div>
+  <h1 style="text-align: center;color:blue;text-shadow: 2px 2px pink;">These are the cards available</h1>
+  <table>
+    <tr>
+        <th>Serial Number</th>
+        <th>Credit Card Number</th>
+        <th>Bank</th>
+        <th>Limit</th>
+        <th>Reamaining Amount</th>
+       
+    </tr>
+    {% for transaction in data %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>**** **** **** {{ transaction.cc_number[-4:] }}</td>
+        <td>{{ transaction.bank}}</td>
+        <td>{{ transaction.credit_limit}}</td>
+        <td>{{ transaction.remaining_limit}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h1 style="text-align: center;color:blue;text-shadow: 3px 3px 5px pink;">Transaction history</h1>
+    <table>
+        <tr>
+            <th>Serial Number</th>
+            <th>Credit Card Number</th>
+            <th>Credit Card Used</th>
+            <th>Used At</th>
+            <th>Amount</th>
+            <th>date/time</th>
+           
+        </tr>
+        {% for transaction in data1 %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>**** **** **** {{ transaction.creditCardNumber[-4:] }}</td>
+            <td>{{ transaction.creditCardUsed }}</td>
+            <td>{{ transaction.usedAt }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{transaction.date}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

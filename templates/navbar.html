@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/navbar.css')}}>
+</head>
+<body>
+<div class="navbar">
+  <a href="/home">Home</a>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/allcards">Add/Remove Cards</a>
+  <a href="/history">Transaction History</a>
+  <a href="/expense">Expense Tracking</a>
+  <a href="/logout">Logout</a>
+  <div class="profile-circle" onclick="location.href='profile'">
+    <img src="https://w7.pngwing.com/pngs/184/113/png-transparent-user-profile-computer-icons-profile-heroes-black-silhouette-thumbnail.png" alt="User Profile">
+  </div>
+</div>
+{% block nav %}
+{% endblock %}
+
+{% block content %}
+{% endblock%}
+</body>
+</html>

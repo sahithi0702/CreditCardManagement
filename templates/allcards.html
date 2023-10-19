@@ -1,0 +1,72 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/allcards.css')}}>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <title>Document</title>
+    <style>
+      body{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://us.123rf.com/450wm/pixelica21/pixelica212001/pixelica21200100163/141962817-white-credit-debit-card-mockup-blank-gift-card-3d-rendering-isolated-on-light-background-ready.jpg?ver=6');
+      }
+    </style>
+</head>
+<body>
+  {% if data%}
+        <h1 style="text-align: center; color:brown">Credit cards</h1>
+        <form action="{{url_for('credit_details')}}">
+            <button>Add card</button>
+        </form>
+  <div class="container">
+    
+    {% for d in data %}   
+    <div class="card">
+       <div class="card-header">
+        <h3>{{ d.bank }}</h3>
+        <p>**** **** **** {{ d.cc_number[-4:] }}</p>
+      </div>
+      <div class="card-body">
+        <div class="card-section">
+          <label>Name:</label>
+          <span>{{ d.name }}</span>
+        </div>
+        <!-- <div class="card-section">
+          <label>Issue Date:</label>
+          <span>{{ d.issue_date }}</span>
+        </div> -->
+        <div class="card-section">
+          <label>Expiry Date:</label>
+          <span>{{ d.expiry_date }}</span>
+         
+        </div>
+        <div class="card-section">
+          <label>Credit Limit:</label>
+          <span>{{ d.credit_limit }}</span>
+        </div>    
+      </div>
+      <div class="card-footer">
+        <form method="post" action="{{url_for('delete',id = d['_id'])}}">
+            <input type="submit" value="Delete">
+        </form>
+      </div>
+      
+     
+      
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>No cards found</h1>
+    {% endif %}
+  </div>         
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>      
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/credit_details.css')}}>
+</head>
+<body><form action="/api/credit_details" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="bank">Bank Name:</label>
+      <select id="bank" name="bank" required>
+        <option value="">Select a bank</option>
+        <option value="SBI">SBI</option>
+        <option value="AXIS">Axis</option>
+        <option value="HDFC">HDFC</option>
+        <option value="UNION">Union</option>
+        <option value="ICICI">ICICI</option>
+        <option value="KOTAK">Kotak</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cc-number">Credit Card Number:</label>
+      <input type="text" id="cc-number" name="cc-number" pattern="[0-9]{16}"  placeholder="#### #### #### ####" title="enter a valid number" required>
+    </div>
+    <div class="form-group">
+      <label for="issue-date">CVV:</label>
+      <input type="text" id="CVV" name="CVV" pattern="[0-9]{3}" placeholder="###" title="enter a three didgit cvv" required>
+    </div>
+    <div class="form-group">
+      <label for="expiry-date">Expiry Date:</label>
+      <input type="date" id="expiry-date" name="expiry-date" required>
+    </div>
+    <div class="form-group">
+      <label for="credit-limit">Credit Limit:</label>
+      <input type="number" id="credit-limit" name="credit-limit" min="0" max="30000000" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  </body>
+  </html>
+  {% endblock %}

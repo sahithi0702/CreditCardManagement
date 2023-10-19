@@ -1,0 +1,64 @@
+{% extends "navbar.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" type="text/css" href={{url_for('static',filename='css/history.css')}}>
+    <style>
+        body{
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGlS39rFrRVwovJvt4vyNGWUi7TX8SyL2xEw&usqp=CAU');
+            background-size: cover;
+            background-repeat:no-repeat;
+        }
+        th{
+            color:white;
+            background-color:grey;
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% if data %}
+    <div class="search">
+        <form action="{{ url_for('history') }}" method="GET">
+            <input type="text" name="search" placeholder="Search by credit card or used at" value="{{ search }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    
+    <h1 style="text-align: center; color:blue; text-shadow:2px 2px 2px rgb(169, 37, 152)">Transaction History</h1>
+    <table>
+        <tr>
+            <th>Serial Number</th>
+            <th>Credit Card Number</th>
+            <th>Credit Card Used</th>
+            <th>Used At</th>
+            <th>Amount</th>
+            <th>Date/Time</th>
+        </tr>
+        {% for transaction in data %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>**** **** **** {{ transaction.creditCardNumber[-4:] }}</td>
+            <td>{{ transaction.creditCardUsed }}</td>
+            <td>{{ transaction.usedAt }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>    
+    <form action="{{ url_for('download_history') }}" method="POST">
+        <button type="submit" name="download" class="download-btn">Download History Now</button>
+    </form>
+    {% else %}
+    No History Found
+    {% endif %}
+</body>
+</html>
+{% endblock %}
