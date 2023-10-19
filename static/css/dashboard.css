@@ -1,0 +1,56 @@
+body{
+  /* padding-top:20px; */
+    /* display: block;
+    margin: auto; */
+    background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBwcHBwgIBwcHBwoHBwcHCA8ICQcKFREWIiARHxMYHSggGBolGx8VITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDysZFRkrKysrLSs3NysrKysrKysrKysrKys3KystKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOwA1gMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAAAAQIDBAf/xAAZEAEBAQEBAQAAAAAAAAAAAAAAEQESEyH/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQIE/8QAFhEBAQEAAAAAAAAAAAAAAAAAABES/9oADAMBAAIRAxEAPwD6sArlAAAABQEFUEFAQUBBQERpAQUBAAAAAAAAAAAUAFAFARYsBUhGoAkIsICRGoQGYRqIDI1EBkUEZFAQAAAAFAUAFFFFIoJFixYKkIsWAzCNQgrMI1CAxCNQgjEI1EBmI0gjKNIIiKAgAKCgKKKNI0KLDFAiwzFgqRYsWIrMI1CAzCNQgMRG4mqMRG9xBGEb1nRGUaQRlGkEZFAXDBcBVxMXBVxrExcFXFwxcFXFFRSEVRUGoCsxI0CMRG00GNTWtTRGWda1NVGdTWtZ0RnUaTRGRdQRVRQXGsZxoVcaxnGsFXGsZxrBpcaxnGsRVVFFUFBEVARnWtTRGdZ1rU0RnWda1NVGdZ1rWdERNXU0RABBUXAXGsZXBWsaxlcFaxrGcXBprFxnGkVpWVBorNKKqFQBBNENZ1dTRE1nV1FRNZ1dQRNRWRATQQVFBWmcUVpcZxRW8XGVFaxWatFaq1mlQaq1mlFWlSpQVEoIamlRUTUNQQZ1UERFQRAABFBVZUGlZUVpayorVWs0ordKzSg3Ss0BqpUqUGqlSpQWogIIIIIIAgCIAAACiKCqyoNFZUVqrWFoNVaxVorVGaUGqlSlBaVmgi1EABAQQAEAAAAAAABUAVWVBRAGqVAFogC0qALUQBRAAQAAAAAAAHTg4COY68L5ixxHfzXzCPOPT5r5hl5oTXp88XzFy8v0+vV5r5Bl5Pp9evyPIMvJ9Pr1+R5Bl5JpHq8zzDLyo9XmnmJl5h6fNPMMvOO/mnmEcR14TgSOY3woR1GatG2lYq0G1c6vSK6Fc+l6CulWuXR0LXWrccejoK7Url0dBXWlcuk6CutK5dHQV0qMdHQlbRjo6CtIzSqiolKAJQRmlYq0RqrWKUG6VilCt0rFKFdKVzq0K3SsUoVulYpQrdKxShW6VilCtUrFKFbpWKUK3UrNKFapWaUGqMUBBARRAFEAVWQGhkBoZAaGQGhlQUZAaRAFEAUQBRAFEAf/2Q==");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /* styles.css */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* .search{
+  padding-top: 10px;
+} */
+body{
+  display:block;
+  margin:auto;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  border: 1px solid rgb(198, 193, 193);
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+input[type="text"] {
+  margin-top: 10px;
+  margin-left:885px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px gray;
+  flex-grow: 1;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}

@@ -1,0 +1,50 @@
+body {
+    background-image: url("");
+    background-color: #f2f2f2; /* Background color for the entire page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff; /* Background color for the form container */
+    width: 400px; /* Increased width */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the form horizontally */
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.admin-form input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.admin-form input[type="submit"] {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-form input[type="submit"]:hover {
+    background-color: #0056b3; /* Hover background color */
+}
+

@@ -1,0 +1,59 @@
+/* styles.css */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+body{
+    display:block;
+    margin:auto;
+  }
+
+  .download-btn {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top:25px;
+}
+input[type="text"] {
+    margin-top: 10px;
+    margin-left:885px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 1px 1px 5px gray;
+    flex-grow: 1;
+  }
+  
+  button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }

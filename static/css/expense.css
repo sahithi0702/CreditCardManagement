@@ -1,0 +1,53 @@
+/* Container styles */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Transaction data styles */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+/* Monthly Expense Charts styles */
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.chart {
+    flex: 1;
+    max-width: 30%;
+    padding: 10px;
+}
+
+/* Individual chart styles */
+canvas {
+    max-width: 100%;
+}
+
+/* Title styles */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    margin-top: 20px;
+}
+body{
+    display:block;
+    margin:auto;
+  }
