@@ -203,7 +203,7 @@ def billgen():
 
                 smtp.starttls()
 
-                smtp.login('Sahithi.Penthala@chubb.com', 'Sahi@100')
+                smtp.login('mail-id', 'mail-password')
 
                 msg = MIMEText("Logged in successfully")
 
